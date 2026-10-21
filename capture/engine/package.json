@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-capture-engine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local full-page screenshot engine for 8Lee8Lee.github.io/capture",
+  "engines": { "node": ">=22" },
+  "scripts": { "start": "node server.cjs" },
+  "dependencies": { "playwright": "1.62.1" }
+}
