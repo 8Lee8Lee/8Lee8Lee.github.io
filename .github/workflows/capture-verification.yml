@@ -1,0 +1,24 @@
+name: Capture verification
+on:
+  push:
+    branches: ['codex/capture-verification-20261024']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    defaults:
+      run:
+        working-directory: capture/engine
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm install --no-save --no-audit --no-fund pngjs@7.0.0
+      - run: npx playwright install --with-deps chromium
+      - run: node verify.cjs
